@@ -23,6 +23,7 @@ public class Startup
             options.AddPolicy("CorsPolicy",
                 policy => { policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin(); });
         });
+        // Test commit
         //var authScheme = "EShoppingGatewayAuthScheme";
        // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             // .AddJwtBearer(authScheme, options =>
