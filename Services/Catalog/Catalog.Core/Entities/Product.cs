@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Catalog.Core.Entities;
 
+//Todo: 2.6.2 Create Sub-entity
 public class Product : BaseEntity
 {
     [BsonElement("Name")]

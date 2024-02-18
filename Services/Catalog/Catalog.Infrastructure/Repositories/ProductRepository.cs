@@ -7,6 +7,7 @@ using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Repositories;
 
+//Todo: 2.11.1 Repository Implementation
 public class ProductRepository : IProductRepository, IBrandRepository, ITypesRepository
 {
     private readonly ICatalogContext _context;
@@ -16,6 +17,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
         _context = context;
     }
     
+    //Todo: 2.11.1.1 Complex Query with Pagination
     public async Task<Pagination<Product>> GetProducts(CatalogSpecParams catalogSpecParams)
     {
         var builder = Builders<Product>.Filter;
@@ -44,7 +46,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
                 PageIndex = catalogSpecParams.PageIndex,
                 Data = await DataFilter(catalogSpecParams, filter),
                 Count = await _context.Products.CountDocumentsAsync(p =>
-                    true) //TODO: Need to check while applying with UI
+                    true)
             };
         }
 
@@ -94,6 +96,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
         }
     }
 
+    //Todo: 2.11.1.2 Query By Id
     public async Task<Product> GetProduct(string id)
     {
         return await _context
@@ -102,6 +105,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
             .FirstOrDefaultAsync();
     }
 
+    //Todo: 2.11.1.3 Query By String
     public async Task<IEnumerable<Product>> GetProductByName(string name)
     {
         FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Name, name);
@@ -121,12 +125,24 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
             .ToListAsync();
     }
 
+    //Todo: 2.11.1.4 Insert 
     public async Task<Product> CreateProduct(Product product)
     {
         await _context.Products.InsertOneAsync(product);
         return product;
     }
 
+    //Todo: 2.11.1.5 Update 
+    /// <summary>
+    /// updateResult.IsAcknowledged: Trả về một giá trị boolean cho biết liệu kết quả của thao tác cập nhật có được xác nhận hay không435.
+    /// Nếu IsAcknowledged là true, điều này có nghĩa là thao tác cập nhật đã được MongoDB nhận và xử lý435.
+    /// Nếu IsAcknowledged là false, thì sẽ ném ra một ngoại lệ3.
+    ///
+    /// updateResult.ModifiedCount: Trả về số lượng tài liệu đã được sửa đổi trong thao tác cập nhật26.
+    /// Ví dụ, nếu bạn thực hiện một thao tác UpdateOneAsync và updateResult.ModifiedCount trả về 1, điều này có nghĩa là một tài liệu đã được cập nhật thành công2.
+    /// </summary>
+    /// <param name="product"></param>
+    /// <returns></returns>
     public async Task<bool> UpdateProduct(Product product)
     {
         var updateResult = await _context
@@ -135,6 +151,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
         return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;
     }
 
+    //Todo: 2.11.1.6 Delete
     public async Task<bool> DeleteProduct(string id)
     {
         FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Id, id);

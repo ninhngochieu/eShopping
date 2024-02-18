@@ -4,6 +4,7 @@ using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Data;
 
+//Todo: 2.8.1 Seed mongo data 
 public class CatalogContextSeed
 {
     public static void SeedData(IMongoCollection<Product> productCollection)

@@ -4,6 +4,7 @@ using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Data;
 
+//Todo: 2.8.1 Seed mongo data 
 public static class BrandContextSeed
 {
     public static void SeedData(IMongoCollection<ProductBrand> brandCollection)

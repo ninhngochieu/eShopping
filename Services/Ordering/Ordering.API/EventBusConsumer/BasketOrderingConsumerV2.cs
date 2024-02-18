@@ -24,7 +24,6 @@ public class BasketOrderingConsumerV2 : IConsumer<BasketCheckoutEventV2>
         using var scope =  _logger.BeginScope("Consuming Basket Checkout Event for {correlationId}",
             context.Message.CorrelationId);
         var command = _mapper.Map<CheckoutOrderCommand>(context.Message);
-        //TODO: Need to add required address details.
         PopulateAddressDetails(command);
         var result = await _mediator.Send(command);
         _logger.LogInformation($"Basket checkout event completed!!!");

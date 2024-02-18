@@ -6,6 +6,11 @@ using MediatR;
 
 namespace Catalog.Application.Handlers;
 
+//Todo: 2.17.1 Handler for Query By Parameter
+/// <summary>
+/// First Parameter: Query
+/// Second Parameter: Response
+/// </summary>
 public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductResponse>
 {
     private readonly IProductRepository _productRepository;
@@ -14,6 +19,13 @@ public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, P
     {
         _productRepository = productRepository;
     }
+    
+    /// <summary>
+    /// Parameter đã xuất hiện xong Query, chỉ cần móc ra để truy vấn và trả về đúng kiểu dữ liệu theo Query
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public async Task<ProductResponse> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
     {
         var product = await _productRepository.GetProduct(request.Id);

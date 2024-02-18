@@ -56,7 +56,6 @@ public class Startup
         {
             options.AddPolicy("CorsPolicy", policy =>
             {
-                //TODO read the same from settings for prod deployment
                 policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
             });
         });
