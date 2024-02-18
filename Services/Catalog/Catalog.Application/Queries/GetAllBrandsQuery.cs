@@ -3,9 +3,8 @@ using MediatR;
 
 namespace Catalog.Application.Queries;
 
-//Todo: 2.13.1 Implement Query for Handler
-
 /// <summary>
+/// Todo: 2.13.1 Implement Query for Handler
 /// Định nghĩa hành vi và kiểu data sẽ trả về
 /// IRequest<T>: Loại request cho Handler
 /// T: Kiểu trả về dữ liệu Response sau khi Handler xử lý xong

@@ -2,7 +2,9 @@ using AutoMapper;
 
 namespace Catalog.Application.Mappers;
 
-//Todo: 2.14.1 Implement Lazy Mapper
+/// <summary>
+/// 2.14.1 Implement Lazy Mapper
+/// </summary>
 public static class ProductMapper
 {
     private static readonly Lazy<IMapper> Lazy = new Lazy<IMapper>(() =>

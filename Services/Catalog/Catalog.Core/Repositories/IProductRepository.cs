@@ -3,7 +3,9 @@ using Catalog.Core.Specs;
 
 namespace Catalog.Core.Repositories;
 
-//Todo: 2.7.1 Create repository interface
+/// <summary>
+/// Todo: 2.7.1 Create repository interface
+/// </summary>
 public interface IProductRepository
 {
     Task<Pagination<Product>> GetProducts(CatalogSpecParams catalogSpecParams);

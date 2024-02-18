@@ -4,7 +4,9 @@ using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Data;
 
-//Todo: 2.9.2 Catalog Context Implement
+/// <summary>
+/// Todo: 2.9.2 Catalog Context Implement
+/// </summary>
 public class CatalogContext : ICatalogContext
 {
     public IMongoCollection<Product> Products { get; }

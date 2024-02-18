@@ -6,8 +6,8 @@ using MediatR;
 
 namespace Catalog.Application.Handlers;
 
-//Todo: 2.17.1 Handler for Query By Parameter
 /// <summary>
+/// Todo: 2.17.1 Handler for Query By Parameter
 /// First Parameter: Query
 /// Second Parameter: Response
 /// </summary>

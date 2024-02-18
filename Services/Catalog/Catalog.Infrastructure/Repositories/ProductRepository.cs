@@ -7,7 +7,9 @@ using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Repositories;
 
-//Todo: 2.11.1 Repository Implementation
+/// <summary>
+/// Todo: 2.11.1 Repository Implementation
+/// </summary>
 public class ProductRepository : IProductRepository, IBrandRepository, ITypesRepository
 {
     private readonly ICatalogContext _context;
@@ -17,7 +19,11 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
         _context = context;
     }
     
-    //Todo: 2.11.1.1 Complex Query with Pagination
+    /// <summary>
+    /// Todo: 2.11.1.1 Complex Query with Pagination
+    /// </summary>
+    /// <param name="catalogSpecParams"></param>
+    /// <returns></returns>
     public async Task<Pagination<Product>> GetProducts(CatalogSpecParams catalogSpecParams)
     {
         var builder = Builders<Product>.Filter;
@@ -96,7 +102,11 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
         }
     }
 
-    //Todo: 2.11.1.2 Query By Id
+    /// <summary>
+    /// Todo: 2.11.1.2 Query By Id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public async Task<Product> GetProduct(string id)
     {
         return await _context
@@ -105,7 +115,11 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
             .FirstOrDefaultAsync();
     }
 
-    //Todo: 2.11.1.3 Query By String
+    /// <summary>
+    /// Todo: 2.11.1.3 Query By String
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
     public async Task<IEnumerable<Product>> GetProductByName(string name)
     {
         FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Name, name);
@@ -125,15 +139,19 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
             .ToListAsync();
     }
 
-    //Todo: 2.11.1.4 Insert 
+    /// <summary>
+    /// Todo: 2.11.1.4 Insert 
+    /// </summary>
+    /// <param name="product"></param>
+    /// <returns></returns>
     public async Task<Product> CreateProduct(Product product)
     {
         await _context.Products.InsertOneAsync(product);
         return product;
     }
-
-    //Todo: 2.11.1.5 Update 
+    
     /// <summary>
+    /// Todo: 2.11.1.5 Update 
     /// updateResult.IsAcknowledged: Trả về một giá trị boolean cho biết liệu kết quả của thao tác cập nhật có được xác nhận hay không435.
     /// Nếu IsAcknowledged là true, điều này có nghĩa là thao tác cập nhật đã được MongoDB nhận và xử lý435.
     /// Nếu IsAcknowledged là false, thì sẽ ném ra một ngoại lệ3.
@@ -151,7 +169,11 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
         return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;
     }
 
-    //Todo: 2.11.1.6 Delete
+    /// <summary>
+    /// Todo: 2.11.1.6 Delete
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public async Task<bool> DeleteProduct(string id)
     {
         FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Id, id);

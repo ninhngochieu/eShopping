@@ -3,7 +3,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Catalog.Core.Entities;
 
-//Todo: 2.6.1 Create Entity
+/// <summary>
+/// Todo: 2.6.1 Create Entity
+/// </summary>
 public class BaseEntity
 {
     /// <summary>

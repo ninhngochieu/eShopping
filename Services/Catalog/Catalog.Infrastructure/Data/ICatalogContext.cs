@@ -3,7 +3,9 @@ using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Data;
 
-//Todo: 2.9.1 Setup Catalog Context Interface 
+/// <summary>
+/// Todo: 2.9.1 Setup Catalog Context Interface 
+/// </summary>
 public interface ICatalogContext
 {
     IMongoCollection<Product> Products { get; }
