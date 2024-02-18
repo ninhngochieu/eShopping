@@ -24,6 +24,11 @@ public class CatalogController : ApiController
         _logger.LogInformation("CorrelationId {correlationId}:", _correlationIdGenerator.Get());
     }
 
+    /// <summary>
+    /// Todo: 2.24.1 Send query to Handler and get response
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet]
     [Route("[action]/{id}", Name = "GetProductById")]
     [ProducesResponseType(typeof(ProductResponse), (int)HttpStatusCode.OK)]
