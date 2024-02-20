@@ -1,6 +1,7 @@
 version: '3.4'
 
 services:
+  # Todo: 2.27.2 Define mongo 
   catalogdb:
     image: mongo
     
@@ -22,12 +23,13 @@ services:
   portainer:
     image: portainer/portainer-ce
       
+  # Todo: 2.27.1 Basket Api 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
-      
+       
   basket.api:
     image: ${DOCKER_REGISTRY-}basketapi
     build:
@@ -63,6 +65,7 @@ services:
 #      context: .
 #      dockerfile: Infrastructure/EShopping.Identity/Dockerfile
       
+# Todo: 2.27.3 Define service volume on Docker for saving data
 volumes:
   mongo_data:
   portainer_data:

@@ -24,6 +24,9 @@ public class CatalogContext : ICatalogContext
         Products = database.GetCollection<Product>(
             configuration.GetValue<string>("DatabaseSettings:CollectionName"));
         
+        //Todo: 2.29.1 Folder path error with Debug (Sourcecode) and Release (Binary)
+        // Vì source build sẽ nằm chung với nhau, cho nên đường dẫn đúng
+        // Nhưng source debug sẽ phải gọi thẳng ở Source folder tree thông qua cấu trúc Project nên không tương thích
         BrandContextSeed.SeedData(Brands);
         TypeContextSeed.SeedData(Types);
         CatalogContextSeed.SeedData(Products);

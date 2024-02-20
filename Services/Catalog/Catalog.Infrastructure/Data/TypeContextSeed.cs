@@ -8,8 +8,12 @@ public class TypeContextSeed
 {
     public static void SeedData(IMongoCollection<ProductType> typeCollection)
     {
+#if DEBUG
+        string path = Path.Combine("..",$"{nameof(Catalog)}.{nameof(Infrastructure)}","Data", "SeedData", "types.json");
+#else
+            string path = Path.Combine("Data", "SeedData", "types.json");
+#endif
         bool checkTypes = typeCollection.Find(b => true).Any();
-        string path = Path.Combine("Data", "SeedData", "types.json");
         if (!checkTypes)
         {
             var typesData = File.ReadAllText(path);

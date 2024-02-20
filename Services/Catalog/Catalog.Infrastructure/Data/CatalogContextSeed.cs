@@ -11,8 +11,12 @@ public class CatalogContextSeed
 {
     public static void SeedData(IMongoCollection<Product> productCollection)
     {
+#if DEBUG
+        string path = Path.Combine("..",$"{nameof(Catalog)}.{nameof(Infrastructure)}","Data", "SeedData", "products.json");
+#else
+            string path = Path.Combine("Data", "SeedData", "products.json");
+#endif
         bool checkProducts = productCollection.Find(b => true).Any();
-        string path = Path.Combine("Data", "SeedData", "products.json");
         if (!checkProducts)
         {
             var productsData = File.ReadAllText(path);

@@ -6,6 +6,8 @@ services:
     restart: always
     ports:
       - "27017:27017"
+    # Todo: 2.27.4 Mount volume from service volume into data folder on image. 
+    # Mount volume từ bên ngoài (mongo_data, có thể mount bằng folder vật lý) tới thư mục data quan trọng của image
     volumes:
       - mongo_data:/data/db
       
@@ -66,6 +68,9 @@ services:
         
   catalog.api:
     container_name: catalog.api
+    # Todo: 2.27.5 Override Appsettings.json properties
+    # Thay thế : bằng __ vì YAML không hiểu kí tự này. Sử dụng để bóc data setting từ Json
+    # Thay thế đường link localhost bằng service name đã depends on
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
 #      - ASPNETCORE_URLS=http://*:9000
@@ -75,8 +80,10 @@ services:
       - "DatabaseSettings__BrandsCollection=Brands"
       - "DatabaseSettings__TypesCollection=Types"
       - "ElasticConfiguration__Uri=http://elasticsearch:9200"
+    # Link tới service khác để call chức năng
     depends_on:
       - catalogdb
+    # Mapping port 80 của image thành port của localhost:9000
     ports:
       - "9000:80"
     
