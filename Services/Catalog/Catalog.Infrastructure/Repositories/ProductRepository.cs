@@ -8,7 +8,7 @@ using MongoDB.Driver;
 namespace Catalog.Infrastructure.Repositories;
 
 /// <summary>
-/// Todo: 2.11.1 Repository Implementation
+/// Todo: 2.11 Repository Implementation
 /// </summary>
 public class ProductRepository : IProductRepository, IBrandRepository, ITypesRepository
 {
@@ -20,7 +20,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
     }
     
     /// <summary>
-    /// Todo: 2.11.1.1 Complex Query with Pagination
+    /// Todo: 2.11.1 Complex Query with Pagination
     /// </summary>
     /// <param name="catalogSpecParams"></param>
     /// <returns></returns>
@@ -30,11 +30,15 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
         var filter = builder.Empty;
         if(!string.IsNullOrEmpty(catalogSpecParams.Search))
         {
+            //Todo: 2.36.1 Search regex
+            //Search gần đúng
             var searchFilter = builder.Regex(x => x.Name, new BsonRegularExpression(catalogSpecParams.Search));
             filter &= searchFilter;
         }
         if(!string.IsNullOrEmpty(catalogSpecParams.BrandId))
         {
+            //Todo: 2.36.2 Search exactly
+            //Search =
             var brandFilter = builder.Eq(x => x.Brands.Id,catalogSpecParams.BrandId);
             filter &= brandFilter;
         }
@@ -103,7 +107,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
     }
 
     /// <summary>
-    /// Todo: 2.11.1.2 Query By Id
+    /// Todo: 2.11.2 Query By Id
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
@@ -116,7 +120,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
     }
 
     /// <summary>
-    /// Todo: 2.11.1.3 Query By String
+    /// Todo: 2.11.3 Query By String
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
@@ -140,7 +144,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
     }
 
     /// <summary>
-    /// Todo: 2.11.1.4 Insert 
+    /// Todo: 2.11.4 Insert 
     /// </summary>
     /// <param name="product"></param>
     /// <returns></returns>
@@ -151,7 +155,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
     }
     
     /// <summary>
-    /// Todo: 2.11.1.5 Update 
+    /// Todo: 2.11.5 Update 
     /// updateResult.IsAcknowledged: Trả về một giá trị boolean cho biết liệu kết quả của thao tác cập nhật có được xác nhận hay không435.
     /// Nếu IsAcknowledged là true, điều này có nghĩa là thao tác cập nhật đã được MongoDB nhận và xử lý435.
     /// Nếu IsAcknowledged là false, thì sẽ ném ra một ngoại lệ3.
@@ -170,7 +174,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
     }
 
     /// <summary>
-    /// Todo: 2.11.1.6 Delete
+    /// Todo: 2.11.6 Delete
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>

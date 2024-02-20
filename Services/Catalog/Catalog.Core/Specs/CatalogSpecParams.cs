@@ -1,5 +1,9 @@
 namespace Catalog.Core.Specs;
 
+/// <summary>
+/// Todo: 2.31.1 Create Specification
+/// Sử dụng bộ lọc nâng cao với nhiều điều kiện và Pagination
+/// </summary>
 public class CatalogSpecParams
 {
     private const int MaxPageSize = 70;
