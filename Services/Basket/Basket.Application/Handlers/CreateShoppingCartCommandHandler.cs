@@ -18,6 +18,13 @@ public class CreateShoppingCartCommandHandler : IRequestHandler<CreateShoppingCa
         _basketRepository = basketRepository;
         _discountGrpcService = discountGrpcService;
     }
+    /// <summary>
+    /// Todo: 3.13.1 Run and test single instance locally
+    /// Chạy service riêng lẻ cần chú ý bỏ qua đoạn code connection (GRPC) tới Service khác 
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public async Task<ShoppingCartResponse> Handle(CreateShoppingCartCommand request, CancellationToken cancellationToken)
     {
         foreach (var item in request.Items)

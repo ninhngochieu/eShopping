@@ -20,6 +20,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     
+  # Todo: 3.15.1 Setup portainer 
   portainer:
     image: portainer/portainer-ce
       

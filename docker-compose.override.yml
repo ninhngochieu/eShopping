@@ -56,6 +56,18 @@ services:
     volumes:
       - pgadmin_data:/root/.pgadmin
       
+  # Todo: 3.15.2 Config portainer
+  # Quản các các container bằng giao diện trực quan thay cho Docker Desktop
+  # Mục đích: Trong microservices có rất nhiều Services, cần có tool quản lý
+  # docker.sock là một UNIX socket mà Docker daemon đang lắng nghe. Đây là điểm vào chính cho Docker API1. Docker cli client sử dụng socket này để thực hiện các lệnh docker theo mặc định1.
+  #
+  #Có thể có nhiều lý do khác nhau khiến bạn cần phải mount Docker socket bên trong một container. 
+  #Ví dụ như khởi chạy các container mới từ bên trong một container khác. 
+  #Hoặc cho mục đích khám phá dịch vụ tự động và Logging1.
+  #
+  #Tuy nhiên, việc này tăng mặt bằng tấn công nên bạn nên cẩn thận nếu bạn mount docker socket bên trong một container. 
+  #Đảm bảo rằng chỉ có các mã đáng tin cậy đang chạy bên trong container đó. 
+  #Nếu không, bạn có thể đơn giản là đánh cắp máy chủ của bạn đang chạy docker daemon, vì Docker theo mặc định khởi chạy tất cả các container dưới dạng root1.
   portainer:
     container_name: portainer
     restart: always

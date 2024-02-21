@@ -61,6 +61,8 @@ public class Startup
         });
         });
         //Redis Settings
+        //Todo: 3.9.1 Distributed Cache configuration
+        //Đọc connection string của redis
         services.AddStackExchangeRedisCache(options =>
         {
             options.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
@@ -78,6 +80,7 @@ public class Startup
         {
             options.OperationFilter<SwaggerDefaultValues>();
         });
+        //Todo: 3.9.2 Add health check for Redis
         services.AddHealthChecks()
             .AddRedis(Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
         services.AddMassTransit(config =>
