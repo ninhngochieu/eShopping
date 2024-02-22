@@ -20,18 +20,27 @@ public class CreateShoppingCartCommandHandler : IRequestHandler<CreateShoppingCa
     }
     /// <summary>
     /// Todo: 3.13.1 Run and test single instance locally
-    /// Chạy service riêng lẻ cần chú ý bỏ qua đoạn code connection (GRPC) tới Service khác 
+    /// Chạy service riêng lẻ cần chú ý bỏ qua đoạn code connection (GRPC) tới Service khác
+    ///
+    /// Todo: 5.3.1 Call Grpc Service
     /// </summary>
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task<ShoppingCartResponse> Handle(CreateShoppingCartCommand request, CancellationToken cancellationToken)
     {
+#if DEBUG
+        foreach (var item in request.Items)
+        {
+            item.Price -= 9999;
+        }
+#else
         foreach (var item in request.Items)
         {
             var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
             item.Price -= coupon.Amount;
         }
+#endif
         var shoppingCart = await _basketRepository.UpdateBasket(new ShoppingCart
         {
             UserName = request.UserName,
