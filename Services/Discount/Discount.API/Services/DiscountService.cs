@@ -13,6 +13,13 @@ public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
     private readonly ILogger<DiscountService> _logger;
     private readonly ICorrelationIdGenerator _correlationIdGenerator;
 
+    /// <summary>
+    /// Todo: 4.13.1 GRPC Service ~ ApiController
+    /// 
+    /// </summary>
+    /// <param name="mediator"></param>
+    /// <param name="logger"></param>
+    /// <param name="correlationIdGenerator"></param>
     public DiscountService(IMediator mediator , ILogger<DiscountService> logger, ICorrelationIdGenerator correlationIdGenerator)
     {
         _mediator = mediator;

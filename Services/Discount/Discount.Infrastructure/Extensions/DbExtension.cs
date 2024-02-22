@@ -8,6 +8,12 @@ namespace Discount.Infrastructure.Extensions;
 
 public static class DbExtension
 {
+    /// <summary>
+    /// Todo: 4.6.1 Dapper migrate database and seed data
+    /// </summary>
+    /// <param name="host"></param>
+    /// <typeparam name="TContext"></typeparam>
+    /// <returns></returns>
     public static IHost MigrateDatabase<TContext>(this IHost host)
     {
         using (var scope = host.Services.CreateScope())

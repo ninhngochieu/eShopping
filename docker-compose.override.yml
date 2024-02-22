@@ -45,6 +45,7 @@ services:
       - "5672:5672"
       - "15672:15672"
         
+  # Todo: 4.16.1 Setup management UI for PostgreSQL 
   pgadmin:
     container_name: pgadmin
     environment:

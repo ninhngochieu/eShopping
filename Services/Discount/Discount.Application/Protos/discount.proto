@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option csharp_namespace = "Discount.Grpc.Protos";
-
+//Todo: 4.7.1 Create protobuf file for Roslyn source generator
 service DiscountProtoService {
   rpc GetDiscount(GetDiscountRequest) returns (CouponModel);
   rpc CreateDiscount(CreateDiscountRequest) returns (CouponModel);
@@ -9,6 +9,7 @@ service DiscountProtoService {
   rpc DeleteDiscount(DeleteDiscountRequest) returns (DeleteDiscountResponse);
 }
 
+//Todo: 4.7.2 Auto generate model
 message GetDiscountRequest {
   string productName = 1;
 }

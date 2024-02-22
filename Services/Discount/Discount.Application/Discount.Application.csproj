@@ -16,6 +16,7 @@
       <PackageReference Include="MediatR" Version="11.1.0" />
     </ItemGroup>
     <ItemGroup>
+        <!-- Todo: 4.8.1 Set this services as GRPC Server-->
         <Protobuf Include="Protos\discount.proto" GrpcServices="Server" />
     </ItemGroup>
 

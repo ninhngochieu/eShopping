@@ -8,6 +8,7 @@ public class Program
     public static void Main(string[] args)
     {
         var host = CreateHostBuilder(args).Build();
+        //Todo: 4.14.2 Setup migrate database
         host.MigrateDatabase<Program>();
         host.Run();
     }

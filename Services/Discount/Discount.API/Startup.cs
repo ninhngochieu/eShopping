@@ -11,6 +11,16 @@ namespace Discount.API;
 
 public class Startup
 {
+    /// <summary>
+    /// Todo: 4. Grpc
+    /// Sử dụng Protobuf thay thế cho JSON / XML
+    /// Build dựa trên HTTP 2 thay vì HTTP 1
+    /// Nhanh hơn 7 - 10 khi transmit message
+    /// Can be used in Polyglot environments
+    ///     Viết được trên nhiều loại ngôn ngữ sau khi biên dịch protobuf file
+    /// Độ trễ thấp
+    /// </summary>
+    /// <param name="services"></param>
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddMediatR(typeof(CreateDiscountCommandHandler).GetTypeInfo().Assembly);
@@ -20,6 +30,13 @@ public class Startup
         services.AddGrpc();
     }
 
+    /// <summary>
+    /// Todo: 4.12.1 Endpoint Mapping for GRPC
+    /// Mapping Service ~ Mapping Controller trong WebApi
+    /// 
+    /// </summary>
+    /// <param name="app"></param>
+    /// <param name="env"></param>
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (env.IsDevelopment())
