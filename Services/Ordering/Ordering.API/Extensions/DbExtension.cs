@@ -6,6 +6,14 @@ namespace Ordering.API.Extensions;
 
 public static class DbExtension
 {
+    /// <summary>
+    /// Todo: 6.22.1 Migrate Entity Framework DB
+    /// Kèm theo Logging
+    /// </summary>
+    /// <param name="host"></param>
+    /// <param name="seeder"></param>
+    /// <typeparam name="TContext"></typeparam>
+    /// <returns></returns>
     public static IHost MigrateDatabase<TContext>(this IHost host, Action<TContext, IServiceProvider> seeder)
         where TContext : DbContext
     {

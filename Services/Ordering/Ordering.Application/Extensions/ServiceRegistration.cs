@@ -8,6 +8,11 @@ namespace Ordering.Application.Extensions;
 
 public static class ServiceRegistration
 {
+    /// <summary>
+    /// Todo: 6.19.1 Add validators and IPipelineBehaviour
+    /// </summary>
+    /// <param name="services"></param>
+    /// <returns></returns>
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());

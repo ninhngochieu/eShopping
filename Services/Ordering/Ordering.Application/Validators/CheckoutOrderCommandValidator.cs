@@ -3,6 +3,9 @@ using Ordering.Application.Commands;
 
 namespace Ordering.Application.Validators;
 
+/// <summary>
+/// Todo: 6.15.1 Add validator
+/// </summary>
 public class CheckoutOrderCommandValidator : AbstractValidator<CheckoutOrderCommand>
 {
     public CheckoutOrderCommandValidator()

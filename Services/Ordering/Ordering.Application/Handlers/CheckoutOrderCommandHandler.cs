@@ -13,12 +13,25 @@ public class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderCommand,
     private readonly IMapper _mapper;
     private readonly ILogger<CheckoutOrderCommandHandler> _logger;
 
+    /// <summary>
+    /// Todo: 6.12.1 Setup logger
+    /// </summary>
+    /// <param name="orderRepository"></param>
+    /// <param name="mapper"></param>
+    /// <param name="logger"></param>
     public CheckoutOrderCommandHandler(IOrderRepository orderRepository, IMapper mapper, ILogger<CheckoutOrderCommandHandler> logger)
     {
         _orderRepository = orderRepository;
         _mapper = mapper;
         _logger = logger;
     }
+    
+    /// <summary>
+    /// Todo: 6.12.2 Log Information
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public async Task<int> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
     {
         var orderEntity = _mapper.Map<Order>(request);

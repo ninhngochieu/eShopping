@@ -32,6 +32,7 @@ public class Startup
         {
             c.SwaggerDoc("v1", new OpenApiInfo {Title = "Ordering.API", Version = "v1"});
         });
+        //Todo: 6.21.1 Add Health check for SQL Server
         services.AddHealthChecks().Services.AddDbContext<OrderContext>();
         services.AddMassTransit(config =>
         {
